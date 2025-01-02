@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auth Page</title>
+<link rel="stylesheet"href="thrust.css">
+</head>
+<body>
+    <div class="auth-container">
+    <div class="logo-container">
+    <img src="logo111.png" href="https://www.thrustmit.in"class="logo">
+        </div>
+        <h2 id="formTitle">Admin</h2> <form id="authForm"method="POST">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>  
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign In" id="submitButton">
+            </div>
+            <div class="form-group">
+                <button type="button" id="signOutBtn" style="display: none;">Sign Out</button>
+            </div>
+            <div class="error-message" id="errorMessage"></div>
+        </form>
+        <div class="alternative-signin">
+            <p>Or Sign in With:</p>
+            
+            <a href="https://myaccount.google.com" class="signin-option">
+                <img src="Googlelogo.webp"  class="signin-logo">
+            </a>
+            <a href="https://www.icloud.com" class="signin-option">
+                <img src="black-n-white-apple-logo-png-clipart-thumbnail-removebg-preview.png"  class="signin-logo">
+            </a>
+ <a href="https://www.office.com"  class="signin-option">
+    <img src="outlookwb.png"  class="signin-logo">
+ </a>
+</div>
+</body>
+</html>
+ 
+

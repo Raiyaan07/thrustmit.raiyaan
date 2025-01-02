@@ -1,0 +1,24 @@
+body {font-family: 'Arial', sans-serif;background-color: #000000;color: #ffffff;
+margin: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;}
+.form-group {margin-bottom: 15px;}
+.form-group label {display: block;margin-bottom: 7px;color: #bbbbbb;}
+.form-group input,.form-group button 
+{ width: 100%;padding: 10px;border-radius: 5px;border: none;outline: none;}
+.form-group input {  background-color: #292929;color: #ffffff;}
+.form-group input:focus {border: 1px solid #a26e1a;}
+.form-group input[type="submit"]:hover,
+.form-group button:hover {background-color: #f48208;}
+#toggleForm {margin-top: 10px;color: #bbbbbb;}
+#toggleForm a {color: #ddeedd;text-decoration: none;}
+#toggleForm a:hover {text-decoration: underline;}
+@media (max-width: 600px) 
+{.auth-container {width: 90%;}}
+.alternative-signin {text-align: center;margin: 20px 0;}
+.alternative-signin p {margin-bottom: 10px;color: #bbbbbb;}
+.signin-option {display: inline-block;margin: 10px;}
+.signin-logo {width: 50px; height: auto;transition: transform 0.2s ease;cursor: pointer;}
+.signin-logo:hover {transform: scale(2.0); }

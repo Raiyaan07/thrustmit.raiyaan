@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Page</title>
+    <link rel="stylesheet" href="thrust.css">
+</head>
+<body>
+    <div class="auth-container">
+        <h2 id="formTitle">Sign In</h2>
+        <form id="authForm" action="#" method="POST">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div id="confirmPasswordGroup" class="form-group" style="display: none;">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign In" id="submitButton">
+            </div>
+            <div class="form-group">
+                <button type="button" id="signOutBtn" style="display: none;">Sign Out</button>
+            </div>
+            <div class="error-message" id="errorMessage"></div>
+        </form>
+        <p id="toggleForm">
+            Don't have an account? <a href="#" id="toggleLink">Create Account</a>
+        </p>
+    </div>
+
+    <script>
+        const formTitle = document.getElementById('formTitle');
+        const toggleLink = document.getElementById('toggleLink');
+        const submitButton = document.getElementById('submitButton');
+        const confirmPasswordGroup = document.getElementById('confirmPasswordGroup');
+        const toggleForm = document.getElementById('toggleForm');
+        const errorMessage = document.getElementById('errorMessage');
+        const signOutBtn = document.getElementById('signOutBtn');
+
+        let isSignIn = true;
+
+        // Toggle between Sign In and Create Account
+        toggleLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            isSignIn = !isSignIn;
+
+            if (isSignIn) {
+                formTitle.textContent = 'Sign In';
+                submitButton.value = 'Sign In';
+                confirmPasswordGroup.style.display = 'none';
+                toggleForm.innerHTML = `Don't have an account? <a href="#" id="toggleLink">Create Account</a>`;
+            } else {
+                formTitle.textContent = 'Create Account';
+                submitButton.value = 'Create Account';
+                confirmPasswordGroup.style.display = 'block';
+                toggleForm.innerHTML = `Already have an account? <a href="#" id="toggleLink">Sign In</a>`;
+            }
+        });
+
+        // Form submission logic
+        document.getElementById('authForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            errorMessage.textContent = '';
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (isSignIn) {
+                // Handle Sign In
+                if (username === 'user' && password === 'password') {
+                    alert('Sign In successful');
+                    signOutBtn.style.display = 'block';
+                } else {
+                    errorMessage.textContent = 'Invalid username or password.';
+                }
+            } else {
+                // Handle Create Account
+                if (password === confirmPassword && username.length > 0 && password.length > 0) {
+                    alert('Account created successfully. You can now sign in.');
+                    // Switch back to Sign In form after successful account creation
+                    toggleLink.click();
+                } else if (password !== confirmPassword) {
+                    errorMessage.textContent = 'Passwords do not match.';
+                } else {
+                    errorMessage.textContent = 'All fields are required.';
+                }
+            }
+        });
+
+        // Handle Sign Out
+        signOutBtn.addEventListener('click', function() {
+            alert('Signed Out successfully');
+            signOutBtn.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
